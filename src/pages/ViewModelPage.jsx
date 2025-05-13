@@ -2,29 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useNavigate } from 'react-router-dom';
-
-const containerStyle = {
-  minHeight: "100vh",
-  width: "100vw",
-  background: "linear-gradient(135deg, #232526 0%, #414345 100%)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
-
-const cardStyle = {
-  background: "rgba(34, 40, 49, 0.97)",
-  borderRadius: "24px",
-  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.25)",
-  padding: "32px",
-  minWidth: "420px",
-  color: "#fff",
-  textAlign: "center",
-  border: "1px solid rgba(255,255,255,0.08)",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-};
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const selectStyle = {
   padding: "10px 18px",
@@ -38,8 +16,10 @@ const selectStyle = {
 };
 
 const canvasWrapperStyle = {
-  width: "600px",
+  width: "100%",
+  maxWidth: "600px",
   height: "400px",
+  maxHeight: "60vh",
   background: "#181a1b",
   borderRadius: "18px",
   boxShadow: "0 4px 16px rgba(31,38,135,0.18)",
@@ -48,7 +28,19 @@ const canvasWrapperStyle = {
   border: "1px solid rgba(255,255,255,0.06)",
 };
 
-const buttonStyle = {
+const cardCustomStyle = {
+  background: "rgba(34, 40, 49, 0.97)",
+  borderRadius: "24px",
+  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.25)",
+  color: "#fff",
+  border: "1px solid rgba(255,255,255,0.08)",
+  maxWidth: "700px",
+  width: "100%",
+  maxHeight: "95vh",
+  overflow: "auto",
+};
+
+const buttonCustomStyle = {
   marginTop: "24px",
   padding: "12px 32px",
   background: "linear-gradient(90deg, #36d1c4 0%, #5b86e5 100%)",
@@ -101,9 +93,17 @@ const ViewModelPage = () => {
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={cardStyle}>
-        <h2 style={{ marginBottom: 0 }}>Select a Model</h2>
+    <div
+      className="d-flex align-items-center justify-content-center"
+      style={{
+        height: "100vh",
+        width: "100vw",
+        background: "linear-gradient(135deg, #232526 0%, #5b86e5 100%)",
+        overflow: "hidden"
+      }}
+    >
+      <div className="card p-4" style={cardCustomStyle}>
+        <h2 className="mb-0">Select a Model</h2>
         <select
           onChange={handleModelSelection}
           value={selectedModel}
@@ -130,7 +130,11 @@ const ViewModelPage = () => {
             {modelUrl && <ModelViewer modelUrl={modelUrl} />}
           </Canvas>
         </div>
-        <button style={buttonStyle} onClick={() => navigate(-1)}>
+        <button
+          style={buttonCustomStyle}
+          className="btn"
+          onClick={() => navigate(-1)}
+        >
           Back
         </button>
       </div>

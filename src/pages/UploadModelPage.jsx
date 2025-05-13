@@ -2,16 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
-
-const containerStyle = {
-  height: "100vh",
-  width: "100vw",
-  background: "linear-gradient(135deg, #232526 0%, #5b86e5 100%)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  overflow: "hidden",
-};
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const cardStyle = {
   background: "rgba(34, 40, 49, 0.97)",
@@ -38,13 +29,6 @@ const inputStyle = {
   fontSize: "1rem",
   outline: "none",
   width: "100%",
-};
-
-const buttonRowStyle = {
-  display: "flex",
-  gap: "16px",
-  justifyContent: "center",
-  marginTop: "18px",
 };
 
 const buttonStyle = {
@@ -173,8 +157,16 @@ const UploadModelPage = () => {
   };
 
   return (
-    <div style={containerStyle}>
-      <div style={cardStyle}>
+    <div
+      className="d-flex align-items-center justify-content-center"
+      style={{
+        height: "100vh",
+        width: "100vw",
+        background: "linear-gradient(135deg, #232526 0%, #5b86e5 100%)",
+        overflow: "hidden"
+      }}
+    >
+      <div style={cardStyle} className="p-4">
         <h2 style={{ marginBottom: 0, marginTop: 0 }}>Upload 3D Model (.glb only)</h2>
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <input
@@ -184,7 +176,7 @@ const UploadModelPage = () => {
             style={inputStyle}
           />
           {previewUrl && (
-            <div style={{ margin: "16px 0" }}>
+            <div className="my-3">
               <div style={previewContainerStyle}>
                 <Canvas camera={{ position: [0, 0, 2.5] }}>
                   <ambientLight intensity={0.7} />
@@ -197,7 +189,7 @@ const UploadModelPage = () => {
               </div>
             </div>
           )}
-          <div style={buttonRowStyle}>
+          <div className="d-flex justify-content-center gap-3 mt-3">
             <button
               type="submit"
               style={buttonStyle}
