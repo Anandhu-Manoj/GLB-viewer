@@ -133,7 +133,9 @@ const UploadModelPage = () => {
       const response = await fetch('http://localhost:5000/api/models/upload', {
         method: 'POST',
         body: formData,
+
       });
+
 
       const result = await response.json();
       if (response.ok) {
@@ -142,7 +144,7 @@ const UploadModelPage = () => {
         setTimeout(() => {
           setShowToast(false);
           navigate(`/view`);
-        }, 1500);
+        }, 2500);
       } else {
         showToastMsg(result.error || 'Upload failed');
       }

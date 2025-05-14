@@ -65,6 +65,7 @@ const ViewModelPage = () => {
         const response = await fetch('http://localhost:5000/api/models');
         const data = await response.json();
         setModels(data);
+        
       } catch (error) {
         console.error('Error fetching models:', error);
       }
@@ -72,7 +73,6 @@ const ViewModelPage = () => {
 
     fetchModels();
   }, []);
-
   const handleModelSelection = async (event) => {
     const modelId = event.target.value;
     setSelectedModel(modelId);

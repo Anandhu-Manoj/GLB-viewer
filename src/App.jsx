@@ -1,8 +1,8 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import UploadModelPage from './pages/UploadModelPage';
-import ViewModelPage from './pages/ViewModelPage';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import UploadModelPage from "./pages/UploadModelPage";
+import ViewModelPage from "./pages/ViewModelPage";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const appContainerStyle = {
   height: "100vh",
@@ -62,24 +62,28 @@ const Home = () => {
       <p>Choose an action:</p>
       <ul className="list-unstyled mt-4 mb-0">
         <li>
-          <a
-            href="/upload"
-            style={hovered === 0 ? { ...linkStyle, ...linkHoverStyle } : linkStyle}
+          <Link
+            to={"/upload"}
+            style={
+              hovered === 0 ? { ...linkStyle, ...linkHoverStyle } : linkStyle
+            }
             onMouseEnter={() => setHovered(0)}
             onMouseLeave={() => setHovered(null)}
           >
             Upload a Model
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="/view"
-            style={hovered === 1 ? { ...linkStyle, ...linkHoverStyle } : linkStyle}
+          <Link
+            to={"/view"}
+            style={
+              hovered === 1 ? { ...linkStyle, ...linkHoverStyle } : linkStyle
+            }
             onMouseEnter={() => setHovered(1)}
             onMouseLeave={() => setHovered(null)}
           >
             View Models
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
@@ -88,8 +92,13 @@ const Home = () => {
 
 const App = () => {
   return (
-    <div style={appContainerStyle} className="d-flex flex-column align-items-center justify-content-center">
-      <h1 style={headingStyle} className="mb-4">3D Model Viewer</h1>
+    <div
+      style={appContainerStyle}
+      className="d-flex flex-column align-items-center justify-content-center"
+    >
+      <h1 style={headingStyle} className="mb-4">
+        3D Model Viewer
+      </h1>
       <Routes>
         <Route path="/upload" element={<UploadModelPage />} />
         <Route path="/view" element={<ViewModelPage />} />
