@@ -129,11 +129,10 @@ const UploadModelPage = () => {
     const formData = new FormData();
     formData.append('file', file);
 
-    try {
+     try {
       const response = await fetch('https://threed-viewer-backend-2.onrender.com/api/models/upload', {
         method: 'POST',
         body: formData,
-
       });
 
 
