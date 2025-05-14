@@ -62,7 +62,7 @@ const ViewModelPage = () => {
   useEffect(() => {
     const fetchModels = async () => {
       try {
-        const response = await fetch('https://threed-viewer-backend-2.onrender.com/api/models');
+        const response = await fetch('https://threed-viewer-backend-2.onrender.com/');
         const data = await response.json();
         setModels(data);
         
@@ -81,9 +81,10 @@ const ViewModelPage = () => {
       setModelUrl('');
       return;
     }
+    //
 
     try {
-      const response = await  fetch(`https://threed-viewer-backend-2.onrender.com/api/models/${modelId}`);
+      const response = await  fetch(`https://threed-viewer-backend-2.onrender.com/${modelId}`);
       const data = await response.blob();
       const modelBlobUrl = URL.createObjectURL(data);
       setModelUrl(modelBlobUrl);
